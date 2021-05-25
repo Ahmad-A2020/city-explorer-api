@@ -11,13 +11,16 @@ server.use(cors());
 const PORT=process.env.PORT;
 
 // // http://localhost:3005/weather?latR=47.60621&lonR=-122.33207
+// // http://localhost:3011/weather?cityName='amman'
+
 
 server.get('/weather',(request,response)=>{
 
-    let late=request.query.latR;
-    let long=request.query.lonR;
+    // let late=request.query.latR;
+    // let long=request.query.lonR;
+    let cityName=request.query.cityName;
     let findCityWeather=weatherData.find(item=>{
-        if (item.lon==long && item.lat==late){
+        if (item.city_name==cityName){
             return item.data;
         }
     })
